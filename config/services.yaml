@@ -1,0 +1,21 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Sage50Service:
+        autowire: true
+        public: true
+        arguments:
+            $serverName: '%env(SAGE_50_SERVER_NAME)%'
+            $dataBase: '%env(SAGE_50_DATA_BASE)%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
